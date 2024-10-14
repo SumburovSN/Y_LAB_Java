@@ -53,7 +53,8 @@ public class HabitManagement {
     }
 
     public void markHabitExecution(Habit habit, LocalDate date){
-        getHabitExecutions(habit).add(date);
+        habit.setExecution(date);
+        System.out.println("Новое исполнение привычки успешно добавлено");
     }
 
     public TreeSet<LocalDate> getHabitExecutions(Habit habit) {

@@ -14,7 +14,7 @@ public class Habit {
         this.name = name;
         this.description = description;
         try {
-            this.frequency = setFrequency(frequency);
+            this.setFrequency(frequency);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -37,9 +37,9 @@ public class Habit {
         this.description = description;
     }
 
-    public Frequency setFrequency(int enumId) throws Exception {
-        if (enumId == 1) {return Frequency.DAILY;}
-        else if (enumId == 2) {return Frequency.WEEKLY;}
+    public void setFrequency(int enumId) throws Exception {
+        if (enumId == 1) {frequency = Frequency.DAILY;}
+        else if (enumId == 2) {frequency = Frequency.WEEKLY;}
         else {throw new Exception("Некорректный код для частоты привычки");}
     }
 
@@ -52,10 +52,8 @@ public class Habit {
         return executions;
     }
 
+    public void setExecution (LocalDate date) {executions.add(date);}
+
     public void clearExecutions() {executions.clear();}
 
-    public int getMaxIntervalInDays () {
-        if (frequency == Frequency.DAILY) {return 1;}
-        else {return 7;}
-    }
 }

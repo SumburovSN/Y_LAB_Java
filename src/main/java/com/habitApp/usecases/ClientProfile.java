@@ -12,12 +12,12 @@ public class ClientProfile {
 
     public ClientProfile(int clientId, UsersList users) {
         this.clientId = clientId;
+        this.users = users;
         try {
             this.client = (Client) users.getUser(clientId);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        this.users = users;
     }
 
     public void editClientProfile(String newName, String NewEmail, String newPassword) {
